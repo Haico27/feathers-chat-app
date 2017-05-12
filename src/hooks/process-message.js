@@ -12,7 +12,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     // Messages can't be longer than 400 characters
     .substring(0, 400)
     // Do some basic HTML escaping
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/, '&gt;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
     // Override the original data
     hook.data = {
