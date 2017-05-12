@@ -4,6 +4,19 @@ const client = feathers();
 // Create the Feathers application with a `socketio` connection
 client.configure(feathers.socketio(socket));
 
+// Create the authentication and store the generated token in LocalStorage
+client.configure(feathers.authentication({
+  storage: window.localStorage
+}));
+
+client.authenticate({
+  strategy: 'local',
+  email: 'feathers@example.com',
+  password: 'secret'
+}).then(token => {
+  console.log('User is logged in');
+});
+
 // Get the service for our `messages` endpoint
 const messages = client.service('messages');
 
